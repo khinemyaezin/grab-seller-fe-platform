@@ -55,5 +55,21 @@ From the root directory, you can run the following commands across all packages 
   npm run test
   ```
 
+## Publishing private packages
+
+The three packages are published together and consumed using exact semantic versions.
+
+1. Create the private `@grab` organization/scope in the npm registry and grant the release account publish access.
+2. Create an npm automation token and add it to this GitHub repository as the `NPM_TOKEN` Actions secret.
+3. Update all three package versions together. Also update the `@grab/seller-api` version used by `@grab/seller-ui`.
+4. Run `npm run release:check` locally.
+5. Run the **Publish shared packages** workflow in GitHub Actions.
+6. Add the same read-capable `NPM_TOKEN` secret to the Seller, Product, and Inventory repositories.
+7. Run `npm install` once in each consumer and commit its regenerated `package-lock.json`.
+
+For local authenticated registry access, copy `.npmrc.example` to `.npmrc` and export `NPM_TOKEN`. Never commit `.npmrc` or the token.
+
+The publish order is API, Contracts, then UI. Published versions cannot be overwritten; increase the versions before every release.
+
 ## 🧪 Testing
 We use **Vitest** for our unit and integration tests (e.g., in the API package), and **MSW** (Mock Service Worker) for API mocking. Run `npm run test` from the root to execute all workspace test suites.
