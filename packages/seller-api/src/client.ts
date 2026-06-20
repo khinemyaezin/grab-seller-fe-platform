@@ -47,9 +47,12 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
 
   const url = await buildUrl(endpoint, params)
   
-  const fullUrl = url.startsWith("http")
-    ? url
-    : `${clientConfig.baseUrl}${url}`
+  let fullUrl = url;
+  if (!url.startsWith("http")) {
+    const base = clientConfig.baseUrl?.replace(/\/$/, "") || "";
+    const path = url.replace(/^\//, "");
+    fullUrl = path ? `${base}/${path}` : base;
+  }
 
   const config: RequestInit = {
     method,

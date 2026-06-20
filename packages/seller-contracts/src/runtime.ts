@@ -1,13 +1,13 @@
 export type SellerRuntimeConfig = {
-  appName: string;
-  apiBaseUrl: string;
-  remotes: {
-    productManifest: string;
-    inventoryManifest: string;
+  readonly appName: string;
+  readonly apiBaseUrl: string;
+  readonly remotes: {
+    readonly productManifest: string;
+    readonly inventoryManifest: string;
   };
 };
 
-export const defaultRuntimeConfig: SellerRuntimeConfig = {
+export const defaultRuntimeConfig: Readonly<SellerRuntimeConfig> = {
   appName: "Grab Store",
   apiBaseUrl: "/api",
   remotes: {
