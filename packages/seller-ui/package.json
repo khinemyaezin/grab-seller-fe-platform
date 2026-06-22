@@ -1,5 +1,5 @@
 {
-  "name": "@grab/seller-ui",
+  "name": "@khinemyaezin/seller-ui",
   "version": "0.1.0",
   "type": "module",
   "files": ["dist"],
@@ -15,7 +15,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@grab/seller-api": "0.1.0",
+    "@khinemyaezin/seller-api": "0.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
