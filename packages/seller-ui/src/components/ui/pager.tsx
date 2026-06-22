@@ -1,5 +1,5 @@
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationEllipsis, PaginationLink, PaginationNext } from "./pagination";
-import type { PageInfo } from "@grab/seller-api";
+import type { PageInfo } from "@khinemyaezin/seller-api";
 
 function generatePagination(currentPage: number, totalPages: number) {
     if (totalPages <= 7) {
