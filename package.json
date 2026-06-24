@@ -3,14 +3,16 @@
   "version": "0.1.3",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/seller-contracts",
+    "packages/seller-api",
+    "packages/seller-ui"
   ],
   "scripts": {
     "build": "npm run build -w @khinemyaezin/seller-contracts -w @khinemyaezin/seller-api -w @khinemyaezin/seller-ui --if-present",
-    "typecheck": "npm run typecheck -w @khinemyaezin/seller-contracts -w @khinemyaezin/seller-api -w @khinemyaezin/seller-ui --if-present",
-    "test": "npm run test -w @khinemyaezin/seller-contracts -w @khinemyaezin/seller-api -w @khinemyaezin/seller-ui --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
     "release:check": "npm run build && npm run typecheck && npm test && npm_config_cache=.npm-cache npm pack --workspaces --dry-run",
-    "publish:packages": "npm publish --workspace @khinemyaezin/seller-contracts && npm publish --workspace @khinemyaezin/seller-api && npm publish --workspace @khinemyaezin/seller-ui"
+    "publish:packages": " npm publish --workspace @khinemyaezin/seller-contracts && npm publish --workspace @khinemyaezin/seller-api && npm publish --workspace @khinemyaezin/seller-ui"
   },
   "engines": {
     "node": ">=20.19.0"
