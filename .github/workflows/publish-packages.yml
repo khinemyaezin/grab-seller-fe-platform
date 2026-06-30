@@ -36,7 +36,8 @@ jobs:
 
       - name: Version Canary
         run: |
-          npx changeset version --snapshot canary-${{ github.run_number }}
+          SHORT_SHA=${GITHUB_SHA::7}
+          npx changeset version --snapshot canary-${SHORT_SHA}
           npm install --package-lock-only
 
       - name: Publish Canary
